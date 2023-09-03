@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 
-uint16_t wait_time;
+static uint16_t wait_time;
 
 static char log_buffer[36] = { '\0' };
 
@@ -20,6 +20,9 @@ void handle_wait_state(void)
 {
 	if (!is_ready_for_transition())
 	{		
+		
+		user_reaction_time = 0;
+		
 		//lcd_print("#\r      Wait\n   for signal");
 		lcd1602_print("\r      Wait      \n   for signal   ");
 		
@@ -31,7 +34,7 @@ void handle_wait_state(void)
 		uart_transmit_data(log_buffer);
 		
 		fast_mode_enabled = true;
-		set_ready_for_transition();
+		allow_state_transition();
 	}
 	else
 	{
@@ -41,8 +44,8 @@ void handle_wait_state(void)
 	if (is_button_event_unhandled())
 	{
 		fast_mode_enabled = false;
-		prompt = "\r    Too fast    \n  try again...  ";
-		set_device_state(READY);
+		//prompt = "\r    Too fast    \n  try again...  ";
+		set_device_state(FALSE_START);
 	}
 	
 	if (wait_time == 0)

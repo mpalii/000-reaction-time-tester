@@ -3,6 +3,8 @@
 #include "state_wait.h"
 #include "state_measuring.h"
 #include "state_result.h"
+#include "state_false_start.h"
+#include "state_timeout.h"
 #include "../drivers/button.h"
 #include <avr/eeprom.h>
 
@@ -19,7 +21,9 @@ void (*handle_state[])(void) =
     handle_ready_state, 
     handle_wait_state, 
     handle_measuring_state, 
-    handle_result_state	
+    handle_result_state,
+	handle_fault_start_state,
+	handle_timeout_state
 };
 
 void handle_device_state(void)
@@ -32,7 +36,6 @@ void init_state_machine(void)
 	set_device_state(READY);
 	user_reaction_time = 0;
 	high_score = eeprom_read_word(SCORE_ADDRESS);
-	prompt = NULL;
 }
 
 void set_device_state(e_state state)
@@ -42,7 +45,7 @@ void set_device_state(e_state state)
 	set_button_event_handled();
 }
 
-void set_ready_for_transition(void)
+void allow_state_transition(void)
 {
 	ready_for_state_transition = true;
 }

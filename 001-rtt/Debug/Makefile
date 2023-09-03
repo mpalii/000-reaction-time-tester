@@ -49,10 +49,12 @@ C_SRCS +=  \
 ../drivers/lcd1602.c \
 ../drivers/led.c \
 ../drivers/uart.c \
+../finite_automaton/state_false_start.c \
 ../finite_automaton/state_machine.c \
 ../finite_automaton/state_measuring.c \
 ../finite_automaton/state_ready.c \
 ../finite_automaton/state_result.c \
+../finite_automaton/state_timeout.c \
 ../finite_automaton/state_wait.c \
 ../main.c \
 ../task_manager/button_handling_task.c \
@@ -78,10 +80,12 @@ drivers/gpio.o \
 drivers/lcd1602.o \
 drivers/led.o \
 drivers/uart.o \
+finite_automaton/state_false_start.o \
 finite_automaton/state_machine.o \
 finite_automaton/state_measuring.o \
 finite_automaton/state_ready.o \
 finite_automaton/state_result.o \
+finite_automaton/state_timeout.o \
 finite_automaton/state_wait.o \
 main.o \
 task_manager/button_handling_task.o \
@@ -100,10 +104,12 @@ drivers/gpio.o \
 drivers/lcd1602.o \
 drivers/led.o \
 drivers/uart.o \
+finite_automaton/state_false_start.o \
 finite_automaton/state_machine.o \
 finite_automaton/state_measuring.o \
 finite_automaton/state_ready.o \
 finite_automaton/state_result.o \
+finite_automaton/state_timeout.o \
 finite_automaton/state_wait.o \
 main.o \
 task_manager/button_handling_task.o \
@@ -122,10 +128,12 @@ drivers/gpio.d \
 drivers/lcd1602.d \
 drivers/led.d \
 drivers/uart.d \
+finite_automaton/state_false_start.d \
 finite_automaton/state_machine.d \
 finite_automaton/state_measuring.d \
 finite_automaton/state_ready.d \
 finite_automaton/state_result.d \
+finite_automaton/state_timeout.d \
 finite_automaton/state_wait.d \
 main.d \
 task_manager/button_handling_task.d \
@@ -144,10 +152,12 @@ drivers/gpio.d \
 drivers/lcd1602.d \
 drivers/led.d \
 drivers/uart.d \
+finite_automaton/state_false_start.d \
 finite_automaton/state_machine.d \
 finite_automaton/state_measuring.d \
 finite_automaton/state_ready.d \
 finite_automaton/state_result.d \
+finite_automaton/state_timeout.d \
 finite_automaton/state_wait.d \
 main.d \
 task_manager/button_handling_task.d \
@@ -227,6 +237,13 @@ drivers/uart.o: ../drivers/uart.c
 	@echo Finished building: $<
 	
 
+finite_automaton/state_false_start.o: ../finite_automaton/state_false_start.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=18432000UL -DSCORE_ADDRESS=0x00  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 finite_automaton/state_machine.o: ../finite_automaton/state_machine.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -249,6 +266,13 @@ finite_automaton/state_ready.o: ../finite_automaton/state_ready.c
 	
 
 finite_automaton/state_result.o: ../finite_automaton/state_result.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=18432000UL -DSCORE_ADDRESS=0x00  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+finite_automaton/state_timeout.o: ../finite_automaton/state_timeout.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=18432000UL -DSCORE_ADDRESS=0x00  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

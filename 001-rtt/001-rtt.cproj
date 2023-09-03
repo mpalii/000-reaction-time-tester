@@ -171,6 +171,12 @@
     <Compile Include="drivers\uart.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="finite_automaton\state_false_start.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="finite_automaton\state_false_start.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="finite_automaton\state_machine.c">
       <SubType>compile</SubType>
     </Compile>
@@ -193,6 +199,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="finite_automaton\state_result.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="finite_automaton\state_timeout.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="finite_automaton\state_timeout.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="finite_automaton\state_wait.c">

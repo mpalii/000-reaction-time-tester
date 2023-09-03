@@ -22,7 +22,7 @@ void handle_measuring_state(void)
 		uart_transmit_data(serial_text_buffer);
 		led_on();
 		buzzer_on();
-		set_ready_for_transition();
+		allow_state_transition();
 	}
 	else
 	{
@@ -44,7 +44,7 @@ void handle_measuring_state(void)
 		buzzer_off();
 		fast_mode_enabled = false;
 
-		prompt = "\r    Too slow    \n  try again...  ";
-		set_device_state(READY);
+		//prompt = "\r    Too slow    \n  try again...  ";
+		set_device_state(TIMEOUT);
 	}
 }

@@ -19,6 +19,8 @@ void launch_app(void)
     init_state_machine();
     init_scheduler();
 	sei();
+	
+	// DON'T USE <util/delay.h> after scheduler launch
     launch_scheduler();
 }
 
@@ -28,7 +30,7 @@ static inline void init_drivers(void)
 	init_button();
 	init_buzzer();
 	init_lcd1602();
-	init_led();         //nop
-	init_score_reset(); //nop
+	init_led();
+	init_score_reset();
 	init_uart(F_CPU, 9600, false);
 }

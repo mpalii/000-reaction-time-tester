@@ -28,13 +28,12 @@ void handle_result_state(void)
 		sprintf(lcd_text_buffer, "\rYour result is: \n%3ums           ", user_reaction_time);
 		lcd1602_print(lcd_text_buffer);
 		
-		set_ready_for_transition();
+		allow_state_transition();
 	}
 	
 
 	if (is_button_event_unhandled() && is_ready_for_transition())
 	{
-		prompt = NULL;
 		set_device_state(READY);
 	}
 }

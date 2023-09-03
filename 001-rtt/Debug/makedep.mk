@@ -18,6 +18,8 @@ drivers\led.c
 
 drivers\uart.c
 
+finite_automaton\state_false_start.c
+
 finite_automaton\state_machine.c
 
 finite_automaton\state_measuring.c
@@ -25,6 +27,8 @@ finite_automaton\state_measuring.c
 finite_automaton\state_ready.c
 
 finite_automaton\state_result.c
+
+finite_automaton\state_timeout.c
 
 finite_automaton\state_wait.c
 
