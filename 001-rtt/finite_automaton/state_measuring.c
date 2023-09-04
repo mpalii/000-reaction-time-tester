@@ -4,24 +4,23 @@
 #include "../drivers/buzzer.h"
 #include "../drivers/led.h"
 #include "../drivers/uart.h"
-#include "../task_manager/scheduler.h"
 #include "../task_manager/button_handling_task.h"
+#include "../app/metrics.h"
+#include "../app/messages.h"
 #include <stdio.h>
 
 static char serial_text_buffer[36] = { '\0' };
-
-// External variables
-volatile uint32_t mcu_operating_time;
-bool fast_mode_enabled;
 
 void handle_measuring_state(void)
 {
 	if (!is_ready_for_transition())
 	{
-		sprintf(serial_text_buffer, "%010lums-MEASURING\r\n", mcu_operating_time);
+		sprintf(serial_text_buffer, MEASURING_SERIAL_PATTERN, mcu_operating_time);
 		uart_transmit_data(serial_text_buffer);
+		
 		led_on();
 		buzzer_on();
+		
 		allow_state_transition();
 	}
 	else
@@ -30,12 +29,10 @@ void handle_measuring_state(void)
 	}
 	
 	if (is_button_event_unhandled()) {
-		fast_mode_enabled = false;
-		
-		set_device_state(RESULT);
-		
 		led_off();
 		buzzer_off();
+		fast_mode_enabled = false;
+		set_device_state(RESULT);
 	}
 	
 	if (user_reaction_time == 1000)
@@ -43,8 +40,6 @@ void handle_measuring_state(void)
 		led_off();
 		buzzer_off();
 		fast_mode_enabled = false;
-
-		//prompt = "\r    Too slow    \n  try again...  ";
 		set_device_state(TIMEOUT);
 	}
 }

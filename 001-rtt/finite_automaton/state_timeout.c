@@ -4,6 +4,8 @@
 #include "../drivers/uart.h"
 #include "../drivers/lcd1602.h"
 #include "../task_manager/scheduler.h"
+#include "../app/metrics.h"
+#include "../app/messages.h"
 #include <stdio.h>
 
 static char serial_text_buffer[36] = { '\0' };
@@ -12,10 +14,10 @@ void handle_timeout_state(void)
 {
 	if (!is_ready_for_transition())
 	{
-		sprintf(serial_text_buffer, "%010lums-TIMEOUT\r\n", mcu_operating_time);
+		sprintf(serial_text_buffer, TIMEOUT_SERIAL_PATTERN, mcu_operating_time);
 		uart_transmit_data(serial_text_buffer);
 		
-		lcd1602_print("\r    Too slow    \n  try again...  ");
+		lcd1602_print(TIMEOUT_LCD_MESSAGE);
 		
 		allow_state_transition();
 	}

@@ -8,6 +8,4 @@
 void init_scheduler(void);
 void launch_scheduler(void);
 
-extern volatile uint32_t mcu_operating_time;
-
 #endif /* SCHEDULER_H_ */

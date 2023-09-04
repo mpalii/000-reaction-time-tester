@@ -42,6 +42,7 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../app/launcher.c \
+../app/metrics.c \
 ../drivers/score_reset.c \
 ../drivers/button.c \
 ../drivers/buzzer.c \
@@ -73,6 +74,7 @@ ASM_SRCS +=
 
 OBJS +=  \
 app/launcher.o \
+app/metrics.o \
 drivers/score_reset.o \
 drivers/button.o \
 drivers/buzzer.o \
@@ -97,6 +99,7 @@ task_manager/state_machine_handling_task.o
 
 OBJS_AS_ARGS +=  \
 app/launcher.o \
+app/metrics.o \
 drivers/score_reset.o \
 drivers/button.o \
 drivers/buzzer.o \
@@ -121,6 +124,7 @@ task_manager/state_machine_handling_task.o
 
 C_DEPS +=  \
 app/launcher.d \
+app/metrics.d \
 drivers/score_reset.d \
 drivers/button.d \
 drivers/buzzer.d \
@@ -145,6 +149,7 @@ task_manager/state_machine_handling_task.d
 
 C_DEPS_AS_ARGS +=  \
 app/launcher.d \
+app/metrics.d \
 drivers/score_reset.d \
 drivers/button.d \
 drivers/buzzer.d \
@@ -182,6 +187,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 app/launcher.o: ../app/launcher.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=18432000UL -DSCORE_ADDRESS=0x00  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+app/metrics.o: ../app/metrics.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=18432000UL -DSCORE_ADDRESS=0x00  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

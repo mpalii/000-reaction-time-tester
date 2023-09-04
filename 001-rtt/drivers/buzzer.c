@@ -4,8 +4,8 @@
 void init_buzzer(void)
 {
     /******************************************************************/
-    /* Set up Timer/Counter2 for 880Hz frequency generation           */
-    /* the passive buzzer will generate sound with 1960Hz pitch       */
+    /* Set up Timer/Counter2 for 440Hz frequency generation           */
+    /* the passive buzzer will generate sound with 880Hz pitch        */
     /* (256 (prescaler) * 82(OCR2A + 1)) / 18_432_000 Hz = 0.001139s  */
     /******************************************************************/
 	

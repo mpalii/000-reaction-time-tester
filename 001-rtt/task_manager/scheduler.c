@@ -4,13 +4,7 @@
 #include "lcd1602_rendering_task.h"
 #include "eeprom_score_saving_task.h"
 #include "serial_transmission_task.h"
-
-// External variables
-volatile uint8_t button_handling_task_time;
-volatile uint8_t state_machine_handling_task_time;
-volatile uint8_t lcd1602_rendering_task_time;
-volatile uint8_t eeprom_score_saving_task_time;
-volatile uint8_t serial_transmission_task_time;
+#include "../app/metrics.h"
 
 static void init_timer(void);
 static void init_tasks(void);

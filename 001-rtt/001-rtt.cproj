@@ -129,6 +129,15 @@
     <Compile Include="app\launcher.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app\messages.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\metrics.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="app\metrics.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="drivers\score_reset.c">
       <SubType>compile</SubType>
     </Compile>

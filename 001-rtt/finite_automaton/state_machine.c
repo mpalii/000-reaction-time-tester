@@ -5,16 +5,12 @@
 #include "state_result.h"
 #include "state_false_start.h"
 #include "state_timeout.h"
+#include "../app/metrics.h"
 #include "../drivers/button.h"
 #include <avr/eeprom.h>
 
 static e_state device_state;
 static bool ready_for_state_transition;
-
-// External variables
-uint16_t user_reaction_time;
-uint16_t high_score;
-char *prompt;
 
 void (*handle_state[])(void) = 
 {
@@ -22,7 +18,7 @@ void (*handle_state[])(void) =
     handle_wait_state, 
     handle_measuring_state, 
     handle_result_state,
-	handle_fault_start_state,
+	handle_false_start_state,
 	handle_timeout_state
 };
 

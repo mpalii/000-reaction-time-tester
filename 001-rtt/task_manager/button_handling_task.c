@@ -2,9 +2,8 @@
 #include "../drivers/button.h"
 #include "../finite_automaton/state_machine.h"
 
-// External variables
-volatile uint32_t mcu_operating_time;
 volatile uint8_t button_handling_task_time;
+bool fast_mode_enabled;
 
 void init_button_handling_task(void)
 {

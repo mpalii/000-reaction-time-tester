@@ -2,7 +2,6 @@
 #define STATE_MACHINE_H_
 
 #include <stdbool.h>
-#include <stdint-gcc.h>
 
 typedef enum
 {
@@ -13,9 +12,6 @@ typedef enum
 	FALSE_START,
 	TIMEOUT
 } e_state;
-
-extern uint16_t user_reaction_time;
-extern uint16_t high_score;
 
 void init_state_machine(void);
 void handle_device_state(void);

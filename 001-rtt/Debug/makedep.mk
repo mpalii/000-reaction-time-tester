@@ -4,6 +4,8 @@
 
 app\launcher.c
 
+app\metrics.c
+
 drivers\score_reset.c
 
 drivers\button.c
