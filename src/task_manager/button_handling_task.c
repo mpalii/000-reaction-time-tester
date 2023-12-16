@@ -13,18 +13,18 @@ void init_button_handling_task(void)
 
 void button_handling_task(void)
 {
-	button_handling_task_time = fast_mode_enabled 
+    button_handling_task_time = fast_mode_enabled 
         ? BUTTON_HANDLING_TASK_TIME_ALTERNATIVE 
         : BUTTON_HANDLING_TASK_TIME;
 
-	if (is_button_pressed() && is_ready_for_transition())
-	{
-		set_button_pressed();
-		set_button_event_unhandled();
-	}
+    if (is_button_pressed() && is_ready_for_transition())
+    {
+        set_button_pressed();
+        set_button_event_unhandled();
+    }
 	
-	if (is_button_released())
-	{
-		set_button_released();
-	}
+    if (is_button_released())
+    {
+        set_button_released();
+    }
 }

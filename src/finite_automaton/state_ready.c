@@ -16,19 +16,19 @@ static char serial_text_buffer[36] = { '\0' };
 
 void handle_ready_state(void)
 {
-	if (!is_ready_for_transition())
-	{
-		sprintf(lcd_text_buffer, READY_SERIAL_PATTERN, mcu_operating_time);
-		uart_transmit_data(lcd_text_buffer);
+    if (!is_ready_for_transition())
+    {
+        sprintf(lcd_text_buffer, READY_SERIAL_PATTERN, mcu_operating_time);
+        uart_transmit_data(lcd_text_buffer);
 		
-		sprintf(serial_text_buffer, READY_LCD_PATTERN, high_score);
-		lcd1602_print(serial_text_buffer);
+        sprintf(serial_text_buffer, READY_LCD_PATTERN, high_score);
+        lcd1602_print(serial_text_buffer);
 		
-		allow_state_transition();
-	}
+        allow_state_transition();
+    }
 	
-	if (is_button_event_unhandled() && is_ready_for_transition())
-	{
-		set_device_state(WAIT);
-	}
+    if (is_button_event_unhandled() && is_ready_for_transition())
+    {
+        set_device_state(WAIT);
+    }
 }

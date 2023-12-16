@@ -7,7 +7,7 @@ static bool button_event;
 void init_button(void)
 {
     button_was_pressed = false;
-	button_event = false;
+    button_event = false;
 }
 
 bool is_button_pressed(void)
@@ -33,15 +33,15 @@ void set_button_released(void)
 
 bool is_button_event_unhandled(void)
 {
-	return button_event;
+    return button_event;
 }
 
 void set_button_event_unhandled(void)
 {
-	button_event = true;
+    button_event = true;
 }
 
 void set_button_event_handled(void)
 {
-	button_event = false;
+    button_event = false;
 }

@@ -12,12 +12,12 @@ volatile uint8_t lcd1602_rendering_task_time;
 
 void init_lcd1602_rendering_task(void)
 {
-	lcd1602_rendering_task_time = LCD1602_RENDERING_TASK_TIME;
+    lcd1602_rendering_task_time = LCD1602_RENDERING_TASK_TIME;
 }
 
 void lcd1602_rendering_task(void)
 {
-	lcd1602_rendering_task_time = LCD1602_RENDERING_TASK_TIME;
-	
-	lcd1602_render();
+    lcd1602_rendering_task_time = LCD1602_RENDERING_TASK_TIME;
+ 
+    lcd1602_render();
 }

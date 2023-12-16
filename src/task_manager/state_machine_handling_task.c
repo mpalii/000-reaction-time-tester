@@ -10,7 +10,7 @@ void init_state_machine_handling_task(void)
 
 void state_machine_handling_task(void)
 {
-	state_machine_handling_task_time = STATE_MACHINE_HANDLING_TASK_TIME;
-	
-	handle_device_state();
+    state_machine_handling_task_time = STATE_MACHINE_HANDLING_TASK_TIME;
+
+    handle_device_state();
 }
