@@ -26,5 +26,10 @@ This project implements a reaction time measurement system using an AVR microcon
 - AVRDUDE for uploading firmware
 - Terminal program for UART communication
 
+## TODO
+- Introducing hardware and software parts  
+- Rewrite Makefile in an Microchip studio manner
+- Optimization buffers for lcd and UART messages
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
