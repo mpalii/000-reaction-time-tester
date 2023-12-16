@@ -66,8 +66,14 @@ size: ./target/$(DESTINATION).elf
 check:
 	@$(AVRDUDE)
 
-erase:
+erease:
 	@$(AVRDUDE) -e
 
 upload:
 	@$(AVRDUDE) -U flash:w:./target/$(DESTINATION).hex:i
+
+fuses-default:
+	@$(AVRDUDE) -U lfuse:w:0x62:m -U hfuse:w:0xd9:m -U efuse:w:0xff:m
+
+fuses-no-divider-ext-clk:
+	@$(AVRDUDE) -U lfuse:w:0xff:m -U hfuse:w:0xd9:m -U efuse:w:0xff:m
