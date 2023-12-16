@@ -1,6 +1,8 @@
 #include "uart.h"
 #include <avr/io.h>
 
+#define END_OF_STRING '\0'
+
 char* output_buffer;
 
 void init_frame_format(void)
@@ -43,7 +45,7 @@ void uart_transmit(void)
     {
         char data = *output_buffer;
 				
-        if (data == '\0')
+        if (data == END_OF_STRING)
         {
 			output_buffer = NULL;
 		    return;

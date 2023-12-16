@@ -9,6 +9,8 @@
 #include "../app/messages.h"
 #include <stdio.h>
 
+#define MEASURING_TIMEOUT 1000 // 1000 milliseconds
+
 static char serial_text_buffer[36] = { '\0' };
 
 void handle_measuring_state(void)
@@ -35,7 +37,7 @@ void handle_measuring_state(void)
 		set_device_state(RESULT);
 	}
 	
-	if (user_reaction_time == 1000)
+	if (user_reaction_time == MEASURING_TIMEOUT)
 	{
 		led_off();
 		buzzer_off();
