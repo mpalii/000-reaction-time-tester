@@ -1,19 +1,15 @@
-#ifndef _BUTTON_H_
-#define _BUTTON_H_
-
-/**
- * @author Maksym Palii
- * @brief Button control function prototypes
- * @version 1.0 
- */
+#ifndef BUTTON_H_
+#define BUTTON_H_
 
 #include <stdbool.h>
-#include "button.h"
 
-extern bool button_was_pressed;
+void init_button(void);
+bool is_button_pressed(void);
+bool is_button_released(void);
+void set_button_pressed(void);
+void set_button_released(void);
+bool is_button_event_unhandled(void);
+void set_button_event_unhandled(void);
+void set_button_event_handled(void);
 
-void button_init(void);
-bool button_pressed(void);
-bool button_released(void);
-
-#endif /* _BUTTON_H_ */
+#endif /* BUTTON_H_ */

@@ -1,17 +1,11 @@
-#ifndef _LCD1602_H_
-#define _LCD1602_H_
+#ifndef LCD1602_H_
+#define LCD1602_H_
 
-/**
- * @author Maksym Palii
- * @brief LCD1602 function prototypes
- * @version 1.0
- * @date 19-July-2023
- */
+#define MOVE_CURSOR_TO_POSITION_0_LINE_1 0x80
+#define MOVE_CURSOR_TO_POSITION_0_LINE_2 0xC0
 
-void lcd1602_init(void);
-void lcd1602_move_cursor_row_1(void);
-void lcd1602_move_cursor_row_2(void);
-void lcd1602_render_message(char* message);
-void lcd1602_clear_display(void);
+void init_lcd1602(void);
+void lcd1602_print(char *message);
+void lcd1602_render(void);
 
-#endif /* _LCD1602_H_ */
+#endif /* LCD1602_H_ */

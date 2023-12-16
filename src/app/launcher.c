@@ -2,33 +2,35 @@
 #include "../drivers/gpio.h"
 #include "../drivers/button.h"
 #include "../drivers/buzzer.h"
-#include "../drivers/led.h"
 #include "../drivers/lcd1602.h"
-#include "../drivers/uart328p.h"
-#include "../state_machine/state_machine.h"
+#include "../drivers/led.h"
+#include "../drivers/score_reset.h"
+#include "../drivers/uart.h"
+#include "../finite_automaton/state_machine.h"
 #include "../task_manager/scheduler.h"
-
 #include <avr/interrupt.h>
 
-void init_drivers(void);
+static inline void init_drivers(void);
 
 void launch_app(void)
 {
     init_drivers();
+    score_reset();
     init_state_machine();
     init_scheduler();
-
-    launch_tasks();
+	sei();
+	
+	// DON'T USE <util/delay.h> after scheduler launch
+    launch_scheduler();
 }
 
-void init_drivers(void)
+static inline void init_drivers(void)
 {
-    gpio_init();
-    lcd1602_init();
-    led_init();
-    buzzer_init();
-    button_init();
-    uart_init(F_CPU, 9600, false);
-
-    sei();
+    init_gpio();
+	init_button();
+	init_buzzer();
+	init_lcd1602();
+	init_led();
+	init_score_reset();
+	init_uart(F_CPU, 9600, false);
 }

@@ -1,6 +1,6 @@
-#ifndef _LAUNCHER_H_
-#define _LAUNCHER_H_
+#ifndef LAUNCHER_H_
+#define LAUNCHER_H_
 
 void launch_app(void);
 
-#endif /* _LAUNCHER_H_ */
+#endif /* LAUNCHER_H_ */

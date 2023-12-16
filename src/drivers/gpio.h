@@ -1,17 +1,7 @@
-#ifndef _GPIO_H_
-#define _GPIO_H_
+#ifndef GPIO_H_
+#define GPIO_H_
 
-/**
- * @author Maksym Palii
- * @brief GPIO mapping
- * @version 1.0
- * @date 13-July-2023
- * 
- * @details
- * General purpose IO pins assignment and handling
- * ATmega328P has 23 general purpose IO lines
- * Two 8bit ports (B, D) and one 7bit port (C)
- */
+#include <avr/io.h>
 
 /**
  * @brief GPIO initialization function prototype.
@@ -19,9 +9,7 @@
  * @param -
  * @return -
  */
-void gpio_init(void);
-
-#include <avr/io.h>
+void init_gpio(void);
 
 /**
  * @brief Generic pin map table.
@@ -60,7 +48,7 @@ void gpio_init(void);
 #define BUTTON            _PB1
 #define LED               _PB2
 #define BUZZER            _PB3
-#define _GPIO_UNUSED_05   _PB4
+#define SCORE_RESET       _PB4
 #define _GPIO_UNUSED_06   _PB5
 #define XTAL1             _PB6 // ignore in gpio.c (crystal oscillator)
 #define XTAL2             _PB7 // ignore in gpio.c (crystal oscillator)
@@ -69,14 +57,14 @@ void gpio_init(void);
 #define LCD_1602_E        _PC1
 #define _GPIO_UNUSED_11   _PC2
 #define _GPIO_UNUSED_12   _PC3
-#define _GPIO_UNUSED_13   _PC4
-#define _GPIO_UNUSED_14   _PC5
+#define LCD_1602_PD0      _PC4
+#define LCD_1602_PD1      _PC5
 #define RESET             _PC6
 
 #define UART_RX           _PD0 // ignore in gpio.c (serial RX)
 #define UART_TX           _PD1 // ignore in gpio.c (serial TX)
-#define _GPIO_UNUSED_19   _PD2
-#define _GPIO_UNUSED_20   _PD3
+#define LCD_1602_PD2      _PD2
+#define LCD_1602_PD3      _PD3
 #define LCD_1602_PD4      _PD4
 #define LCD_1602_PD5      _PD5
 #define LCD_1602_PD6      _PD6
@@ -130,4 +118,5 @@ void gpio_init(void);
 #define GPIO_LOW(GPIO) (*PORT_ADDRESS(GPIO) &= ~GPIO_PIN_BIT(GPIO))
 #define GPIO_GET_INPUT(GPIO) (*PIN_ADDRESS(GPIO) & GPIO_PIN_BIT(GPIO))
 
-#endif /* _GPIO_H_ */
+
+#endif /* GPIO_H_ */

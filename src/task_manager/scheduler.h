@@ -1,13 +1,11 @@
-#ifndef _SCHEDULER_H_
-#define _SCHEDULER_H_
+#ifndef SCHEDULER_H_
+#define SCHEDULER_H_
 
-/**
- * @author Maksym Palii
- * @brief Simple round robbin scheduler
- * @version 1.0 
- */
+#include <avr/interrupt.h>
+#include <stdbool.h>
+#include <stdint-gcc.h>
 
 void init_scheduler(void);
-void launch_tasks(void);
+void launch_scheduler(void);
 
-#endif /* _SCHEDULER_H_ */
+#endif /* SCHEDULER_H_ */
